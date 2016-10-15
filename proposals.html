@@ -45,8 +45,8 @@
 
     <div class="container">
 
-        <div class="starter-template">
-            <h1>Dome</h1>
+        <div class="starter-template" id="proposals">
+            <h1>Proposed routes</h1>
         </div>
 
     </div><!-- /.container -->
@@ -55,5 +55,23 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            for (proposal of JSON.parse(sessionStorage.proposals).routes) {
+                var routeID = "route" + route.id
+                $("#routes").append("<form class=\"form-group row\">"
+                    + "<label class=\"col-xs-9\" for=\"" + routeID + "\">" + route.from + " to " + route.to + "</label>"
+                    + "<div class=\"col-xs-3\">"
+                    + "<button type=\"submit\" class=\"btn btn-default\" id=\"" + routeID + "\">Go</button>"
+                    + "</div></form>")
+                $("#" + routeID).click(function () {
+                    sessionStorage.route = JSON.stringify(route)
+                })
+            }
+            $("#suggest").submit(function () {
+                sessionStorage.prev = "nearest.html"
+            })
+        })
+    </script>
 </body>
 </html>

@@ -72,12 +72,11 @@
                     + "</div></div>")
                 $("#" + routeID).click(function () {
                     sessionStorage.route = JSON.stringify(route)
-                    alert(route.from + " to " + route.to)
-                })
-                $("#suggest").submit(function () {
-                    sessionStorage.prev = "nearest.html"
                 })
             }
+            $("#suggest").submit(function () {
+                sessionStorage.prev = "nearest.html"
+            })
         })
     </script>
 </body>
